@@ -1,12 +1,4 @@
-import os
 from openai import OpenAI
-
-# 从环境变量中读取密钥
-# secret_key = os.getenv('OPENAI_API_KEY')
-
-# 使用密钥
-# print(secret_key)
-
 client = OpenAI()
 
 math_tutor_assistant = client.beta.assistants.create(
