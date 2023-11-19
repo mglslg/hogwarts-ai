@@ -1,10 +1,9 @@
-from api.sdk import run
-from api_config import config
 from openai import OpenAI
+import assistant
 
 
 def call_api():
-    run.do_run(config.get_assistant_by_name("Math Tutor"), "thread_9s3MhO8HhGAmGb5tlOtrdNWw")
+    assistant.run.do_run(assistant.config.get_assistant_by_name("Math Tutor"), "thread_9s3MhO8HhGAmGb5tlOtrdNWw")
 
 
 def get_message():
