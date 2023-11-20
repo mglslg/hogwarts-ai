@@ -3,27 +3,12 @@ from openai_api import assistant
 from openai_api import chat
 
 
-def abc():
-    print(123)
+def test1():
+    print('__name__:', __name__)
+    print('__file__:', __file__)
+    print('__doc__:', __doc__)
+    print('__package__:', __package__)
+    print('__builtins__:', __builtins__)
 
 
-def test_api111():
-    msg = chat.send_msg("你好呀")
-
-    print(msg)
-    print(msg.content)
-
-
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, True)  # add assertion here
-
-
-def assistant_test():
-    message_list = assistant.get_thread_by_id('thread_9s3MhO8HhGAmGb5tlOtrdNWw')
-    for msg in message_list:
-        print(type(msg))
-
-
-if __name__ == '__main__':
-    unittest.main()
+test1()
