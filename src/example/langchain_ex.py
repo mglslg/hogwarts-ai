@@ -5,6 +5,9 @@ from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 from langchain.agents.load_tools import get_all_tool_names
 from langchain.chat_models import ChatOpenAI
+from langchain.document_loaders import YoutubeLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
 
 import langchain
 
@@ -69,12 +72,23 @@ def langchain_chat():
         print('assistant:', output)
 
 
+def download_youtube(video_url):
+    loader = YoutubeLoader.from_youtube_url(video_url)
+    transcript = loader.load()
+    print(transcript)
+
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=100)
+    docs = text_splitter.split_documents(transcript)
+
+
 # langchain_chat()
 
 # langchain_state()
 
-langchain_agent()
+# langchain_agent()
 
 # langchain_simple('example的缩写是什么')
 
 # langchain_prompt()
+
+download_youtube("https://www.youtube.com/watch?v=UgX5lgv4uVM&list=PLAcBKcB4AjbGq3ksftZo5Vso03uWiUnd2&index=7&t=836s")
