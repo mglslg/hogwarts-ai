@@ -7,7 +7,6 @@ from langchain_community.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-import numpy as np
 
 
 # https://github.com/openai/openai-python/issues/676
@@ -34,14 +33,6 @@ def save_to_local_file():
         namespace="slgtest")
     embeddings = cached_embedder.embed_documents(["你好", "智能鲜花客服", '马王爷有7只眼', '哈利波特别大'])
     print("共生成向量个数:", len(embeddings))
-
-
-def get_embedding(text: str):
-    if not text:
-        return []
-    embeddings_model = OpenAIEmbeddings()
-    embeddings = embeddings_model.embed_documents([text])
-    return embeddings[0]
 
 
 def retrieve_default():
@@ -88,24 +79,6 @@ def retrieve_from_local_file(question):
     # 这玩意不是查询，而是把查询语句弄成向量……
     embedding_answer = cached_embedder.embed_query(question)
     print(embedding_answer)
-
-
-def cosine_similarity(a, b):
-    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
-
-
-def search_docs(df, user_query, top_n=4):
-    embedding = get_embedding(
-        user_query,
-        model="text-embedding-ada-002"
-        # model should be set to the deployment name you chose when you deployed the text-embedding-ada-002 (Version 2) model
-    )
-    df["similarities"] = df.ada_v2.apply(lambda x: cosine_similarity(x, embedding))
-
-    res = (
-        df.sort_values("similarities", ascending=False).head(top_n)
-    )
-    return res
 
 
 if __name__ == '__main__':
