@@ -47,7 +47,7 @@ def get_embedding(text: str):
 def retrieve_default():
     loader = TextLoader("./data/questions.txt", encoding="utf8")
     index = VectorstoreIndexCreator().from_loaders([loader])
-    result = index.query("马王爷有几只眼？")
+    result = index.query("哈利波特是谁？")
     print(result)
 
 
@@ -109,5 +109,5 @@ def search_docs(df, user_query, top_n=4):
 
 
 if __name__ == '__main__':
-    save_to_local_file()
-    # retrieve_from_local_file("马王爷")
+    print("hello")
+    retrieve_default()
