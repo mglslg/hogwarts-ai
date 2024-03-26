@@ -36,8 +36,9 @@ def retrieve_from_chroma():
 
     vectordb.persist()
 
-    embeddings = util.get_embeddings("抽烟")
-    docs1 = vectordb.similarity_search_by_vector(embeddings)
+    # embeddings = util.get_embeddings("抽烟")
+    # docs1 = vectordb.similarity_search_by_vector(embeddings)
+    docs1 = vectordb.similarity_search("张三")
 
     print(docs1[0].page_content)
 
