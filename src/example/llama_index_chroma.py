@@ -1,8 +1,8 @@
 import chromadb
 from llama_index.core import VectorStoreIndex
-from llama_index_client.types import ChromaVectorStore
 from llama_index.core import StorageContext
-from llama_index.core.readers.file.base import SimpleDirectoryReader
+from llama_index.core import SimpleDirectoryReader
+from llama_index.vector_stores.chroma import ChromaVectorStore
 
 
 def llama_index_chroma():
@@ -11,13 +11,13 @@ def llama_index_chroma():
     documents = SimpleDirectoryReader(input_dir="./data").load_data()
 
     # initialize client, setting path to save data
-    db = chromadb.PersistentClient(path="./chroma_db_llama_index")
+    db = chromadb.PersistentClient(path="./data/chroma_db_llama_index")
 
     # create collection
     chroma_collection = db.get_or_create_collection("quickstart")
 
     # assign chroma as the vector_store to the context
-    vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
+    vector_store = ChromaVectorStore(chroma_collection=chroma_collection, ssl=False)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     # create your index

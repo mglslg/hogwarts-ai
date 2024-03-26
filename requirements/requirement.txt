@@ -3,7 +3,9 @@ Flask==3.0.2
 langchain==0.1.13
 langchain_community==0.0.29
 langchain_openai==0.1.1
+llama_index==0.10.19
+llama-index-vector-stores-chroma==0.1.6
+llama-index-readers-file==0.1.12
 numpy==1.26.4
-openai==1.14.2
+openai==1.14.3
 pandas==2.2.1
-llama-index==0.10.12
