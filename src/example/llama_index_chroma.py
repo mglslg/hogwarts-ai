@@ -5,7 +5,7 @@ from llama_index.core import SimpleDirectoryReader
 from llama_index.vector_stores.chroma import ChromaVectorStore
 
 
-def llama_index_chroma():
+def llama_index_chroma(question: str):
     # load some documents
     # documents = SimpleDirectoryReader(input_dir="./data", input_files=[".data/questions.txt"]).load_data()
     documents = SimpleDirectoryReader(input_dir="./data").load_data()
@@ -17,7 +17,7 @@ def llama_index_chroma():
     chroma_collection = db.get_or_create_collection("quickstart")
 
     # assign chroma as the vector_store to the context
-    vector_store = ChromaVectorStore(chroma_collection=chroma_collection, ssl=False)
+    vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     # create your index
@@ -27,9 +27,15 @@ def llama_index_chroma():
 
     # create a query engine and query
     query_engine = index.as_query_engine()
-    response = query_engine.query("伏地魔是谁？")
+    response = query_engine.query(question)
+
+    # update method
+    # index.update_ref_doc(documents[0])
+
     print(response)
 
 
 if __name__ == '__main__':
-    llama_index_chroma()
+    llama_index_chroma("哈利波特和伏地魔为什么打架？")
+    llama_index_chroma("伏地魔有几只眼？")
+    llama_index_chroma("马王爷和哈利波特谁厉害，为什么")
