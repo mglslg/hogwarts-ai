@@ -37,5 +37,3 @@ def llama_index_chroma(question: str):
 
 if __name__ == '__main__':
     llama_index_chroma("哈利波特和伏地魔为什么打架？")
-    llama_index_chroma("伏地魔有几只眼？")
-    llama_index_chroma("马王爷和哈利波特谁厉害，为什么")
