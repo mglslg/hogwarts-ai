@@ -11,7 +11,6 @@ def init_app(curr_app):
         content = chat.send_msg(data['msg']).content
         return jsonify({'replay': content}), 200
 
-
     @curr_app.route('/chat/context', methods=['POST'])
     def chat_context():
         if not request.is_json:

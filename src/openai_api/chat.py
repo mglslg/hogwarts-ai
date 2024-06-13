@@ -44,7 +44,8 @@ def send_msg_stream(msg):
             delta = first_choice.delta  # get the delta from the choice
             chunk_message = delta.content if delta.content is not None else ''  # get the content from the delta
             collected_messages.append(chunk_message)  # save the message
-            print(f"Message received {chunk_time:.2f} seconds after request: {chunk_message}")  # print the delay and text
+            print(
+                f"Message received {chunk_time:.2f} seconds after request: {chunk_message}")  # print the delay and text
         else:
             print(f"No choices available for this chunk, received after {chunk_time:.2f} seconds")
 
@@ -54,5 +55,5 @@ def send_msg_stream(msg):
     print(f"Full conversation received: {full_reply_content}")
 
 
-send_msg_stream('chunk是什么意思')
-
+if __name__ == '__main__':
+    send_msg_stream('chunk是什么意思')

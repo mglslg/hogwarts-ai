@@ -33,6 +33,10 @@ def save_to_local_file():
         namespace="slgtest")
     embeddings = cached_embedder.embed_documents(["你好", "智能鲜花客服", '马王爷有7只眼', '哈利波特别大'])
     print("共生成向量个数:", len(embeddings))
+    print("openai 向量长度", len(embeddings[0]))
+    print("openai 向量长度", len(embeddings[1]))
+    print("openai 向量长度", len(embeddings[2]))
+    print("openai 向量长度", len(embeddings[3]))
 
 
 def retrieve_default():
@@ -83,4 +87,4 @@ def retrieve_from_local_file(question):
 
 if __name__ == '__main__':
     print("hello")
-    retrieve_default()
+    save_to_local_file()

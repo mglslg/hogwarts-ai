@@ -9,3 +9,4 @@ llama-index-readers-file==0.1.12
 numpy==1.26.4
 openai==1.14.3
 pandas==2.2.1
+scrapegraphai==1.4.0
