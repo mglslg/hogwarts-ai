@@ -14,7 +14,7 @@ def pw_test():
     # 创建一个新的页面（_blank）
     page = context.new_page()
     # 页面需要进入哪个网址
-    page.goto("https://edition.cnn.com")
+    page.goto("https://www.linkedin.com")
     # 类似断点，会有一个playwright窗口，让你进行相关操作（如元素定位，录制）
     page.pause()
     # 设置最大等待超时时间（超过该时间则会报错 ）
